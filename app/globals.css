@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Brand tokens — mirrored from tailwind.config.ts for raw CSS usage */
+  --brand-primary: #1a7a4a;
+  --brand-accent: #2ecc71;
+  --brand-dark: #111827;
+  --brand-offwhite: #f7f9f5;
+  --brand-amber: #f5a623;
+}
+
+html {
+  /* Smooth scroll for anchor-linked navigation */
+  scroll-behavior: smooth;
+  /* Offset anchor targets so the sticky navbar doesn't cover headings */
+  scroll-padding-top: 80px;
+}
+
+body {
+  color: var(--brand-dark);
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer components {
+  /* Reusable section shell with generous vertical rhythm */
+  .section {
+    @apply mx-auto w-full max-w-7xl px-5 py-20 sm:px-8 md:py-28;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-brand-amber;
+  }
+
+  /* Touch-friendly primary CTA */
+  .btn-primary {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-brand-primary px-7 py-3 text-base font-semibold text-white shadow-card transition-all duration-200 hover:bg-brand-accent hover:shadow-card-hover;
+  }
+
+  .btn-outline {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border-2 border-brand-primary px-7 py-3 text-base font-semibold text-brand-primary transition-all duration-200 hover:bg-brand-primary hover:text-white;
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
